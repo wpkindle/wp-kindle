@@ -1,5 +1,5 @@
-import Footer from "@/components/shrared/footer";
-import Header from "@/components/shrared/header";
+import Footer from "@/components/shared/footer";
+import Header from "@/components/shared/header";
 import React from "react";
 
 export default function RootLayout({
