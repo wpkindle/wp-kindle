@@ -3,11 +3,13 @@ export const APP_DESCRIPTION =
   process.env.NEXT_PUBLIC_APP_DESCRIPTION ||
   "An Amazon clone built with Next.js, Postgres, Shadcn";
 
+export const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 3;
+
 export const PAYMENT_METHODS = process.env.PAYMENT_METHODS
   ? process.env.PAYMENT_METHODS.split(", ")
-  : ["PAYMOB"];
+  : ["PayPal", "Stripe", "CashOnDelivery"];
 export const DEFAULT_PAYMENT_METHOD =
-  process.env.DEFAULT_PAYMENT_METHOD || "PAYMOB";
+  process.env.DEFAULT_PAYMENT_METHOD || "PayPal";
 
 export const signInDefaultValues = {
   email: "",
