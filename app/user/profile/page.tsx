@@ -5,7 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import { APP_NAME } from "@/lib/constants";
 
-import ProfileForm from "./profile-form";
+import ProfileForm from "./profile.form";
 
 export const metadata: Metadata = {
   title: `Customer Profile - ${APP_NAME}`,
