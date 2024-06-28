@@ -5,9 +5,7 @@ import { Poppins as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import React from "react";
-import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
-import { extractRouterConfig } from "uploadthing/server";
-import { ourFileRouter } from "./api/uploadthing/core";
+import { ThemeProvider } from "@/components/shared/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,10 +31,15 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-
-        {children}
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
