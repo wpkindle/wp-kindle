@@ -8,6 +8,7 @@ import {
 export default async function Home() {
   const latestProducts = await getLatestProducts();
   const featuredProducts = await getFeaturedProducts();
+
   return (
     <div>
       {featuredProducts.length > 0 && (

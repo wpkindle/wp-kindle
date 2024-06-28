@@ -234,7 +234,6 @@ export default function OrderDetailsForm({
                   </PayPalScriptProvider>
                 </div>
               )}
-
               {isAdmin && !isPaid && paymentMethod === "CashOnDelivery" && (
                 <MarkAsPaidButton />
               )}
