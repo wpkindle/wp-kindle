@@ -22,7 +22,7 @@ import { z } from "zod";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { UploadButton } from "@/lib/uploadthing";
-import { Checkbox } from "@radix-ui/react-checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
@@ -82,7 +82,7 @@ export default function ProductForm({
   const images = form.watch("images");
   const isFeatured = form.watch("isFeatured");
   const banner = form.watch("banner");
-
+  console.log(form.formState.errors);
   return (
     <Form {...form}>
       <form
