@@ -14,12 +14,11 @@ type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
 
-// eslint-disable-next-line no-unused-vars
-
 type CarouselProps = {
   opts?: CarouselOptions;
   plugins?: CarouselPlugin;
   orientation?: "horizontal" | "vertical";
+  // eslint-disable-next-line no-unused-vars
   setApi?: (api: CarouselApi) => void;
 };
 
