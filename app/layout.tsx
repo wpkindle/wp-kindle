@@ -43,6 +43,11 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
+        <script
+          defer
+          async
+          src="https://cdn.trustindex.io/loader-cert.js?fab0a62145895820b996f0cf302"
+        ></script>
       </body>
     </html>
   );

@@ -19,7 +19,7 @@ export const users = pgTable(
   "user",
   {
     id: uuid("id").defaultRandom().primaryKey().notNull(),
-    name: text("name").notNull(),
+    name: text("name").notNull().default("NO_NAME"),
     email: text("email").notNull(),
     role: text("role").notNull().default("user"),
     password: text("password"),
@@ -89,7 +89,7 @@ export const products = pgTable(
     slug: text("slug").notNull(),
     category: text("category").notNull(),
     images: text("images").array().notNull(),
-    brand: text("brand").notNull(),
+    detail: text("detail").notNull(),
     description: text("description").notNull(),
     stock: integer("stock").notNull(),
     price: numeric("price", { precision: 12, scale: 2 }).notNull().default("0"),

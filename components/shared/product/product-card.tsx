@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Product } from "@/types";
 import ProductPrice from "./product-price";
 import Rating from "./rating";
+import { Button } from "@/components/ui/button";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -22,9 +23,6 @@ const ProductCard = ({ product }: { product: Product }) => {
       </CardHeader>
       <CardContent className="p-4 grid gap-4">
         <div>
-          <p className="text-xs">{product.brand}</p>
-        </div>
-        <div>
           <Link href={`/product/${product.slug}`}>
             <h2 className="text-sm font-medium">{product.name}</h2>
           </Link>
@@ -36,6 +34,16 @@ const ProductCard = ({ product }: { product: Product }) => {
           ) : (
             <p className="text-destructive">Out of Stock</p>
           )}
+        </div>
+        <div>
+          <Link
+            href={`/quickview/product/${[product.slug]}`}
+            className="w-full"
+          >
+            <Button variant="outline" size="sm" className="flex gap-2 w-full">
+              <span>Quick View</span>
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-
+import styles from "../../../ProductDetails.module.css";
 import ProductImages from "@/components/shared/product/product-images";
 import ProductPrice from "@/components/shared/product/product-price";
 import { Badge } from "@/components/ui/badge";
@@ -9,9 +9,9 @@ import { APP_NAME } from "@/lib/constants";
 import AddToCart from "@/components/shared/product/add-to-cart";
 import { getMyCart } from "@/lib/actions/cart.actions";
 import { round2 } from "@/lib/utils";
-import ReviewList from "./review-list";
-import { auth } from "@/auth";
-import Rating from "@/components/shared/product/rating";
+// import ReviewList from "./review-list";
+// import { auth } from "@/auth";
+// import Rating from "@/components/shared/product/rating";
 
 export async function generateMetadata({
   params,
@@ -37,39 +37,43 @@ const ProductDetails = async ({
   const product = await getProductBySlug(slug);
   if (!product) notFound();
   const cart = await getMyCart();
-  const session = await auth();
+  // const session = await auth();
   return (
     <>
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-5">
-          <div className="col-span-2">
-            <ProductImages images={product.images!} />
-          </div>
-
-          <div className="col-span-2 flex flex-col w-full  gap-8 p-5">
-            <div className="flex flex-col gap-6">
-              <p className="p-medium-16 rounded-full bg-grey-500/10   text-grey-500">
-                {product.brand} {product.category}
-              </p>
-              <h1 className="h3-bold">{product.name}</h1>
-              <Rating
-                value={Number(product.rating)}
-                caption={`${product.numReviews} reviews`}
-              />
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <div className="flex gap-3">
-                  <ProductPrice
-                    value={Number(product.price)}
-                    className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700"
-                  />
-                </div>
-              </div>
+        <div className="flex gap-5">
+          <div className="border rounded-lg w-full flex">
+            <div className=" col-span-2">
+              <ProductImages images={product.images!} />
             </div>
 
-            <div>
-              <p>Description:</p>
-              <p>{product.description}</p>
+            <div className="col-span-2 flex flex-col w-full  gap-8 p-5">
+              <div className="flex flex-col gap-6">
+                <p className="p-medium-16 rounded-full bg-grey-500/10 text-grey-500">
+                  Category: {product.category}
+                </p>
+                <h1 className="h3-bold">{product.name}</h1>
+                {/* <Rating
+                value={Number(product.rating)}
+                caption={`${product.numReviews} reviews`}
+              /> */}
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <div className="flex gap-3">
+                    <ProductPrice
+                      value={Number(product.price)}
+                      className="p-bold-20 rounded-full bg-green-500/10 px-10 py-2 text-green-700"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                />
+              </div>
             </div>
           </div>
           <div>
@@ -108,15 +112,22 @@ const ProductDetails = async ({
             </Card>
           </div>
         </div>
+        <h2 className="font-bold text-3xl my-3">Product Detail:</h2>
+        <div
+          className={styles.description}
+          dangerouslySetInnerHTML={{
+            __html: product.detail?.toString(),
+          }}
+        />
       </section>
-      <section className="mt-10">
+      {/* <section className="mt-10">
         <h2 className="h2-bold  mb-5">Customer Reviews</h2>
-        <ReviewList
+         <ReviewList
           productId={product.id}
           productSlug={product.slug}
           userId={session?.user.id!}
         />
-      </section>
+      </section> */}
     </>
   );
 };

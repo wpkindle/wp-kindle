@@ -23,8 +23,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { UploadButton } from "@/lib/uploadthing";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { useState } from "react";
 
 export default function ProductForm({
   type,
@@ -45,6 +47,20 @@ export default function ProductForm({
     defaultValues:
       product && type === "Update" ? product : productDefaultValues,
   });
+
+  const [description, setDescription] = useState("");
+
+  const handleDescriptionChange = (value: string) => {
+    setDescription(value);
+    form.setValue("description", value); // Update form value
+  };
+
+  const [detail, setDetail] = useState("");
+
+  const handleDetailChange = (value: string) => {
+    setDetail(value);
+    form.setValue("detail", value); // Update form value
+  };
 
   const { toast } = useToast();
 
@@ -155,14 +171,18 @@ export default function ProductForm({
 
           <FormField
             control={form.control}
-            name="brand"
-            render={({ field }: { field: any }) => (
+            name="description"
+            render={() => (
               <FormItem className="w-full">
-                <FormLabel>Brand</FormLabel>
+                <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter product brand" {...field} />
+                  <ReactQuill
+                    theme="snow"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                    modules={{ toolbar: true }}
+                  />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -292,15 +312,16 @@ export default function ProductForm({
         <div>
           <FormField
             control={form.control}
-            name="description"
-            render={({ field }) => (
+            name="detail"
+            render={() => (
               <FormItem className="w-full">
-                <FormLabel>Description</FormLabel>
+                <FormLabel>Detail</FormLabel>
                 <FormControl>
-                  <Textarea
-                    placeholder="Enter product description"
-                    className="resize-none"
-                    {...field}
+                  <ReactQuill
+                    theme="snow"
+                    value={detail}
+                    onChange={handleDetailChange}
+                    modules={{ toolbar: true }}
                   />
                 </FormControl>
                 <FormMessage />

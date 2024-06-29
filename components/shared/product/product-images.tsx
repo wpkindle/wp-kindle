@@ -2,7 +2,7 @@
 import Image from "next/image";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 
 export default function ProductImages({ images }: { images: string[] }) {
   const [current, setCurrent] = React.useState(0);
@@ -16,7 +16,7 @@ export default function ProductImages({ images }: { images: string[] }) {
         height={1000}
         className="min-h-[300px] object-cover object-center"
       />
-      <div className="flex">
+      {/* <div className="flex">
         {images.map((image, index) => (
           <div
             key={image}
@@ -29,7 +29,7 @@ export default function ProductImages({ images }: { images: string[] }) {
             <Image src={image} alt={"image"} width={100} height={100} />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
