@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { Poppins as FontSans } from "next/font/google";
@@ -43,11 +44,11 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
-        <script
+        <Script
           defer
           async
           src="https://cdn.trustindex.io/loader-cert.js?fab0a62145895820b996f0cf302"
-        ></script>
+        />
       </body>
     </html>
   );
