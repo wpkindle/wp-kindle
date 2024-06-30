@@ -23,12 +23,14 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   approvePayPalOrder,
+  createPayMobOrder,
   createPayPalOrder,
   deliverOrder,
   updateOrderToPaidByCOD,
 } from "@/lib/actions/order.actions";
 import { useTransition } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/router";
 
 export default function OrderDetailsForm({
   order,
@@ -104,24 +106,32 @@ export default function OrderDetailsForm({
     );
   };
 
-  const MarkAsDeliveredButton = () => {
+  const MarkAsPayButton = () => {
     const [isPending, startTransition] = useTransition();
     const { toast } = useToast();
     return (
       <Button
         type="button"
         disabled={isPending}
+        className="w-full"
         onClick={() =>
           startTransition(async () => {
-            const res = await deliverOrder(order.id);
-            toast({
-              variant: res.success ? "default" : "destructive",
-              description: res.message,
-            });
+            try {
+              const res = await createPayMobOrder(
+                order.id,
+                orderItems,
+                shippingAddress
+              );
+              if (res && res.paymentLink) {
+                window.location.href = res.paymentLink;
+              }
+            } catch (error) {
+              console.log(error);
+            }
           })
         }
       >
-        {isPending ? "processing..." : "Mark As Delivered"}
+        {isPending ? "Processing..." : "Pay"}
       </Button>
     );
   };
@@ -146,11 +156,11 @@ export default function OrderDetailsForm({
           </Card>
           <Card>
             <CardContent className="p-4 gap-4">
-              <h2 className="text-xl pb-4">Shipping Address</h2>
-              <p>{shippingAddress.fullName}</p>
-              <p>
-                {shippingAddress.email}, {shippingAddress.phone_number},{" "}
-                {shippingAddress.country}{" "}
+              <h2 className="text-xl pb-4">Billing Information</h2>
+              <p className="mb-2">{shippingAddress.fullName}</p>
+              <p className="mb-2">{shippingAddress.email}</p>
+              <p className="mb-2">
+                {shippingAddress.phone_number}, {shippingAddress.country}
               </p>
 
               {isDelivered ? (
@@ -237,7 +247,9 @@ export default function OrderDetailsForm({
               {isAdmin && !isPaid && paymentMethod === "CashOnDelivery" && (
                 <MarkAsPaidButton />
               )}
-              {isAdmin && isPaid && !isDelivered && <MarkAsDeliveredButton />}
+
+              {!isPaid && paymentMethod === "Card" && <MarkAsPayButton />}
+              {/* {isAdmin && isPaid && !isDelivered && <MarkAsDeliveredButton />} */}
             </CardContent>
           </Card>
         </div>

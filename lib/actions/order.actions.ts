@@ -15,6 +15,7 @@ import { revalidatePath } from "next/cache";
 import { PaymentResult } from "@/types";
 import { PAGE_SIZE } from "../constants";
 import { sendPurchaseReceipt } from "@/email";
+import { paymob } from "../paymob";
 
 // GET
 export async function getOrderById(orderId: string) {
@@ -195,6 +196,49 @@ export async function createPayPalOrder(orderId: string) {
         success: true,
         message: "PayPal order created successfully",
         data: paypalOrder.id,
+      };
+    } else {
+      throw new Error("Order not found");
+    }
+  } catch (err) {
+    return { success: false, message: formatError(err) };
+  }
+}
+
+export async function createPayMobOrder(
+  orderId: string,
+  orderItems: any,
+  shippingAddress: any
+) {
+  console.log(orderId);
+  try {
+    const order = await db.query.orders.findFirst({
+      where: eq(orders.id, orderId),
+    });
+
+    console.log(order);
+    if (order) {
+      const { Id, paymentLink } = await paymob.createOrder2(
+        Number(order.totalPrice),
+        orderItems,
+        shippingAddress
+      );
+      await db
+        .update(orders)
+        .set({
+          paymentResult: {
+            id: Id,
+            email_address: "",
+            status: "",
+            pricePaid: "0",
+          },
+        })
+        .where(eq(orders.id, orderId));
+      return {
+        success: true,
+        message: "Card order created successfully",
+        data: orderId,
+        paymentLink: paymentLink,
       };
     } else {
       throw new Error("Order not found");
