@@ -20,7 +20,7 @@ const Header = async () => {
   const categories = await getAllCategories();
 
   return (
-    <header className="w-full border-b">
+    <header className="w-full border-b py-4">
       <div className="wrapper flex-between">
         <div className="flex-start">
           <Drawer direction="left">
@@ -51,14 +51,13 @@ const Header = async () => {
               </DrawerHeader>
             </DrawerContent>
           </Drawer>
-          <Link href="/" className="flex-start">
+          <Link href="/" className="flex-start ml-2">
             <Image
-              src="/assets/icons/logo.svg"
-              width={48}
-              height={48}
+              src="/assets/images/logo.webp"
+              width={150}
+              height={150}
               alt={`${APP_NAME} logo`}
             />
-            {APP_NAME}
           </Link>
         </div>
         <div className="hidden md:block">

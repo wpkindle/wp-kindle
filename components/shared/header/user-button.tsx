@@ -24,10 +24,7 @@ export default async function UserButton() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div className="flex items-center">
-            <Button
-              variant="ghost"
-              className="relative w-8 h-8 rounded-full ml-2"
-            >
+            <Button variant="ghost" className="relative h-8 rounded-full ml-2">
               {session.user.name}
             </Button>
           </div>

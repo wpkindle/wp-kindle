@@ -21,6 +21,24 @@ export const metadata: Metadata = {
   description: "The Name of Trust & Professionalism",
 };
 
+const BASE_URL = "https://app.chatwoot.com";
+
+const scriptInnerHTML = `
+  (function(d,t) {
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src="${BASE_URL}/packs/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: '4ebe3BrLMjQYYfxnzJXNU6Fi',
+        baseUrl: "${BASE_URL}"
+      })
+    }
+  })(document,"script");
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,6 +67,8 @@ export default function RootLayout({
           async
           src="https://cdn.trustindex.io/loader-cert.js?fab0a62145895820b996f0cf302"
         />
+
+        <script dangerouslySetInnerHTML={{ __html: scriptInnerHTML }} />
       </body>
     </html>
   );
