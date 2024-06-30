@@ -52,14 +52,14 @@ export default function ProductForm({
 
   const handleDescriptionChange = (value: string) => {
     setDescription(value);
-    form.setValue("description", value); // Update form value
+    form.setValue("description", value);
   };
 
   const [detail, setDetail] = useState("");
 
   const handleDetailChange = (value: string) => {
     setDetail(value);
-    form.setValue("detail", value); // Update form value
+    form.setValue("detail", value);
   };
 
   const { toast } = useToast();

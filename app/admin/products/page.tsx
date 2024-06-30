@@ -53,7 +53,7 @@ export default async function AdminProductsPage({
               <TableHead className="text-right">PRICE</TableHead>
               <TableHead>CATEGORY</TableHead>
               <TableHead>STOCK</TableHead>
-              <TableHead>RATING</TableHead>
+              {/* <TableHead>RATING</TableHead> */}
               <TableHead className="w-[100px]">ACTIONS</TableHead>
             </TableRow>
           </TableHeader>
@@ -67,7 +67,7 @@ export default async function AdminProductsPage({
                 </TableCell>
                 <TableCell>{product.category}</TableCell>
                 <TableCell>{product.stock}</TableCell>
-                <TableCell>{product.rating}</TableCell>
+                {/* <TableCell>{product.rating}</TableCell> */}
                 <TableCell className="flex gap-1">
                   <Button asChild variant="outline" size="sm">
                     <Link href={`/admin/products/${product.id}`}>Edit</Link>
