@@ -62,7 +62,7 @@ const ProductDetails = async ({
                   <div className="flex gap-3">
                     <ProductPrice
                       value={Number(product.price)}
-                      className="p-bold-20 rounded-full bg-green-500/10 px-10 py-2 text-green-700"
+                      className="p-bold-20 rounded-full bg-green-500/10 px-10bhhhhbbb py-2 text-green-700"
                     />
                   </div>
                 </div>
@@ -114,7 +114,7 @@ const ProductDetails = async ({
         </div>
         <h2 className="font-bold text-3xl my-3">Product Detail:</h2>
         <div
-          className={styles.description}
+          className={styles.detail}
           dangerouslySetInnerHTML={{
             __html: product.detail?.toString(),
           }}

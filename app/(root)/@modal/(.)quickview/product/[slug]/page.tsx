@@ -2,7 +2,7 @@ import AddToCart from "@/components/shared/product/add-to-cart";
 import ProductImages from "@/components/shared/product/product-images";
 import ProductPrice from "@/components/shared/product/product-price";
 import QuickViewModalWrapper from "@/components/shared/product/quickview-modal-wrapper";
-import Rating from "@/components/shared/product/rating";
+// import Rating from "@/components/shared/product/rating";
 import { getMyCart } from "@/lib/actions/cart.actions";
 import { getProductBySlug } from "@/lib/actions/product.actions";
 import { notFound } from "next/navigation";
@@ -23,10 +23,10 @@ export default async function StorefrontProductQuickView(props: {
           </div>
           <div className="md:col-span-5 w-full flex flex-col gap-2">
             <h3 className="h3-bold">{product.name}</h3>
-            <p>{product.description}</p>
+            {/* <p>{product.description}</p> */}
 
             <div className="flex items-center gap-4">
-              <Rating value={Number(product.rating)} />
+              {/* <Rating value={Number(product.rating)} /> */}
               {product.stock > 0 ? (
                 <ProductPrice value={Number(product.price)} />
               ) : (
