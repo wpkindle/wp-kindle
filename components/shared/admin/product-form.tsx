@@ -176,12 +176,14 @@ export default function ProductForm({
               <FormItem className="w-full">
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <ReactQuill
-                    theme="snow"
-                    value={description}
-                    onChange={handleDescriptionChange}
-                    modules={{ toolbar: true }}
-                  />
+                  {typeof window !== "undefined" && (
+                    <ReactQuill
+                      theme="snow"
+                      value={description}
+                      onChange={handleDescriptionChange}
+                      modules={{ toolbar: true }}
+                    />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -317,12 +319,14 @@ export default function ProductForm({
               <FormItem className="w-full">
                 <FormLabel>Detail</FormLabel>
                 <FormControl>
-                  <ReactQuill
-                    theme="snow"
-                    value={detail}
-                    onChange={handleDetailChange}
-                    modules={{ toolbar: true }}
-                  />
+                  {typeof window !== "undefined" && (
+                    <ReactQuill
+                      theme="snow"
+                      value={detail}
+                      onChange={handleDetailChange}
+                      modules={{ toolbar: true }}
+                    />
+                  )}
                 </FormControl>
                 <FormMessage />
               </FormItem>
