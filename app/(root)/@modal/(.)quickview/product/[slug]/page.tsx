@@ -7,6 +7,7 @@ import { getMyCart } from "@/lib/actions/cart.actions";
 import { getProductBySlug } from "@/lib/actions/product.actions";
 import { notFound } from "next/navigation";
 import ReloadButton from "./reload-button";
+import styles from "../../../../../ProductDetails.module.css";
 
 export default async function StorefrontProductQuickView(props: {
   params: { slug: string };
@@ -23,8 +24,10 @@ export default async function StorefrontProductQuickView(props: {
           </div>
           <div className="md:col-span-5 w-full flex flex-col gap-2">
             <h3 className="h3-bold">{product.name}</h3>
-            {/* <p>{product.description}</p> */}
-
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{ __html: product.description }}
+            />
             <div className="flex items-center gap-4">
               {/* <Rating value={Number(product.rating)} /> */}
               {product.stock > 0 ? (
