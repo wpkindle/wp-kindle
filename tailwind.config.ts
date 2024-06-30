@@ -9,7 +9,7 @@ export default withUt({
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx,mdx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {

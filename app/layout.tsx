@@ -9,6 +9,7 @@ import React from "react";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import ChatwootScript from "@/components/ChatwootScript";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -44,10 +45,17 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
+        <ChatwootScript />
         <Script
           defer
           async
           src="https://cdn.trustindex.io/loader-cert.js?fab0a62145895820b996f0cf302"
+        />
+        <Script
+          src="https://app.chatwoot.com/packs/js/sdk.js"
+          strategy="afterInteractive" // Load after initial render
+          defer
+          async
         />
       </body>
     </html>
