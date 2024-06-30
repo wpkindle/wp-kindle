@@ -23,18 +23,16 @@ type OrderInformationProps = {
 PurchaseReceiptEmail.PreviewProps = {
   order: {
     id: crypto.randomUUID(),
-    userId: "123",
+    userId: "",
     user: {
-      name: "John Doe",
-      email: "bS8Rn@example.com",
+      name: "",
+      email: "",
     },
-    paymentMethod: "Stripe",
+    paymentMethod: "Card",
     shippingAddress: {
-      fullName: "John Doe",
-      streetAddress: "123 Main St",
-      city: "New York",
-      postalCode: "10001",
-      country: "US",
+      fullName: "",
+      email: "",
+      country: "",
     },
     createdAt: new Date(),
     totalPrice: "110",

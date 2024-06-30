@@ -149,8 +149,8 @@ export default function OrderDetailsForm({
               <h2 className="text-xl pb-4">Shipping Address</h2>
               <p>{shippingAddress.fullName}</p>
               <p>
-                {shippingAddress.streetAddress}, {shippingAddress.city},{" "}
-                {shippingAddress.postalCode}, {shippingAddress.country}{" "}
+                {shippingAddress.email}, {shippingAddress.phone_number},{" "}
+                {shippingAddress.country}{" "}
               </p>
 
               {isDelivered ? (

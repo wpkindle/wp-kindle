@@ -54,9 +54,9 @@ export default function ShippingAddressForm({
     <>
       <CheckoutSteps current={1} />
       <div className="max-w-md mx-auto space-y-4">
-        <h1 className="h2-bold mt-4">Shipping Address</h1>
+        <h1 className="h2-bold mt-4">Billing Address</h1>
         <p className="text-sm text-muted-foreground">
-          Please enter the address that you want to ship to
+          Please enter the below Requirements
         </p>
         <Form {...form}>
           <form
@@ -82,12 +82,12 @@ export default function ShippingAddressForm({
             <div>
               <FormField
                 control={form.control}
-                name="streetAddress"
+                name="email"
                 render={({ field }: { field: any }) => (
                   <FormItem className="w-full">
-                    <FormLabel>Address</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter address" {...field} />
+                      <Input placeholder="Enter email address" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -97,12 +97,14 @@ export default function ShippingAddressForm({
             <div className="flex flex-col gap-5 md:flex-row">
               <FormField
                 control={form.control}
-                name="city"
+                name="phone_number"
                 render={({ field }: { field: any }) => (
                   <FormItem className="w-full">
-                    <FormLabel>City</FormLabel>
+                    <FormLabel>
+                      Phone Number <span className="text-xs">(optional)</span>
+                    </FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter city" {...field} />
+                      <Input placeholder="Enter Phone Number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -116,19 +118,6 @@ export default function ShippingAddressForm({
                     <FormLabel>Country</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter country" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="postalCode"
-                render={({ field }: { field: any }) => (
-                  <FormItem className="w-full">
-                    <FormLabel>Postal Code</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Enter postal code" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
