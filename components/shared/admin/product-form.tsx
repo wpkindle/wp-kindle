@@ -1,5 +1,5 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import slugify from "slugify";
 import {
   Form,
@@ -24,9 +24,9 @@ import Image from "next/image";
 import { UploadButton } from "@/lib/uploadthing";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function ProductForm({
   type,
@@ -176,14 +176,12 @@ export default function ProductForm({
               <FormItem className="w-full">
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  {typeof window !== "undefined" && (
-                    <ReactQuill
-                      theme="snow"
-                      value={description}
-                      onChange={handleDescriptionChange}
-                      modules={{ toolbar: true }}
-                    />
-                  )}
+                  <ReactQuill
+                    theme="snow"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                    modules={{ toolbar: true }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -319,14 +317,12 @@ export default function ProductForm({
               <FormItem className="w-full">
                 <FormLabel>Detail</FormLabel>
                 <FormControl>
-                  {typeof window !== "undefined" && (
-                    <ReactQuill
-                      theme="snow"
-                      value={detail}
-                      onChange={handleDetailChange}
-                      modules={{ toolbar: true }}
-                    />
-                  )}
+                  <ReactQuill
+                    theme="snow"
+                    value={detail}
+                    onChange={handleDetailChange}
+                    modules={{ toolbar: true }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
