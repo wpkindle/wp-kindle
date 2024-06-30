@@ -1,4 +1,3 @@
-"use client";
 import ProductForm from "@/components/shared/admin/product-form";
 import { APP_NAME } from "@/lib/constants";
 import { Metadata } from "next";
