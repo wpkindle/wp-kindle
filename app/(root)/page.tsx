@@ -7,13 +7,13 @@ import { getLatestProducts } from "@/lib/actions/product.actions";
 export default async function Home() {
   const latestProducts = await getLatestProducts();
   return (
-    <div>
+    <>
       <ProductCarousel />
-      <div className="space-y-8">
+      <main className="flex-1 wrapper space-y-8">
         <ProductList title="Newest Arrivals" data={latestProducts} />
         <ProductPromotion />
         <EcommerceFeatures />
-      </div>
-    </div>
+      </main>
+    </>
   );
 }

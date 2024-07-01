@@ -1,5 +1,4 @@
 import axios from "axios";
-import { revalidatePath } from "next/cache";
 
 const PAYMOB_URL = "https://pakistan.paymob.com/api";
 

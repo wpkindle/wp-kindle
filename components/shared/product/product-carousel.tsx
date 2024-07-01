@@ -43,39 +43,32 @@ export default function ProductCarousel() {
       plugins={[
         Autoplay({
           delay: 2000,
-          stopOnInteraction: true,
-          stopOnMouseEnter: true,
+          stopOnInteraction: false,
+          stopOnMouseEnter: false,
         }),
       ]}
     >
       <CarouselContent>
         {staticImages.map((image) => (
           <CarouselItem key={image.id}>
-            {/* Use image.id if defined */}
-            <Link href="#">
-              {/* Remove product link if not needed */}
-              <div className="relative mx-auto">
-                <Image
-                  alt={image.altText}
-                  src={image.imageUrl}
-                  width="0"
-                  height="0"
-                  sizes="100vw"
-                  className="w-full h-auto filter blur-sm" // Add blur filter class
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <h2 className="bg-black border bg-opacity-50 text-3xl font-bold p-2 text-white">
-                    {image.altText} {/* Use altText as title */}
-                  </h2>
-                </div>
+            <div className="relative mx-auto">
+              <Image
+                alt={image.altText}
+                src={image.imageUrl}
+                width="0"
+                height="0"
+                sizes="100vw"
+                className="w-full h-auto filter blur-sm" // Add blur filter class
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <h2 className="bg-black border bg-opacity-50 text-3xl font-bold p-2 text-white">
+                  {image.altText} {/* Use altText as title */}
+                </h2>
               </div>
-            </Link>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   );
 }
