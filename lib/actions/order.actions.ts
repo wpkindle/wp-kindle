@@ -256,6 +256,7 @@ export const updateOrderToPaid = async ({
     throw new Error("Order not found");
   }
   console.log("sendPurchaseReceipt");
+  console.log("sendPurchaseReceipt");
   await sendPurchaseReceipt({ order: updatedOrder });
 };
 
@@ -275,7 +276,7 @@ export async function deliverOrder(orderId: string) {
       where: eq(orders.id, orderId),
     });
     if (!order) throw new Error("Order not found");
-    if (!order.isPaid) throw new Error("Order is not paid");
+    if (order.isPaid) throw new Error("Order is already paid");
 
     await db
       .update(orders)
