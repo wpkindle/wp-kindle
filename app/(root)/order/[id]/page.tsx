@@ -22,7 +22,6 @@ const OrderDetailsPage = async ({
   return (
     <OrderDetailsForm
       order={order}
-      paypalClientId={process.env.PAYPAL_CLIENT_ID || "sb"}
       isAdmin={session?.user.role === "admin" || false}
     />
   );
