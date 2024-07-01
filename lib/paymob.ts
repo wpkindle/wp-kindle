@@ -4,6 +4,7 @@ const PAYMOB_URL = "https://pakistan.paymob.com/api";
 
 export const paymob = {
   authenticate: async function () {
+    // eslint-disable-next-line no-unused-vars
     const API_TOKEN = process.env.PAY_API;
     const url = `${PAYMOB_URL}/auth/tokens`;
     const headers = {
