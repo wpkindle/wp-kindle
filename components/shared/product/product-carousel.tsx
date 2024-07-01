@@ -33,7 +33,7 @@ const staticImages = [
 export default function ProductCarousel() {
   return (
     <Carousel
-      className="w-full mb-12"
+      className="w-full mb-12 mt-16"
       opts={{
         loop: true,
       }}

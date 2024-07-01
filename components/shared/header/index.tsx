@@ -12,7 +12,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, SearchIcon } from "lucide-react";
 import { getAllCategories } from "@/lib/actions/product.actions";
 import Search from "./search";
 
@@ -20,7 +20,7 @@ const Header = async () => {
   const categories = await getAllCategories();
 
   return (
-    <header className="w-full border-b py-4">
+    <header className="w-full border-b py-3 fixed top-0 z-50 bg-white">
       <div className="wrapper flex-between">
         <div className="flex-start">
           <Drawer direction="left">
@@ -65,8 +65,12 @@ const Header = async () => {
         </div>
         <Menu />
       </div>
-      <div className="md:hidden block   px-5 pb-2">
-        <Search />
+      <div className="md:hidden block px-5 pb-2">
+        <Link href="/search">
+          <Button>
+            <SearchIcon />
+          </Button>
+        </Link>
       </div>
     </header>
   );
