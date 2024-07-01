@@ -23,10 +23,10 @@ type OrderInformationProps = {
 PurchaseReceiptEmail.PreviewProps = {
   order: {
     id: crypto.randomUUID(),
-    userId: "",
+    userId: "123",
     user: {
-      name: "",
-      email: "",
+      name: "test",
+      email: "test@gmail.com",
     },
     paymentMethod: "Card",
     shippingAddress: {
@@ -56,7 +56,7 @@ PurchaseReceiptEmail.PreviewProps = {
       id: "123",
       status: "succeeded",
       pricePaid: "12",
-      email_address: "bS8Rn@example.com",
+      email_address: "support@wpkindle.com",
     },
   },
 } satisfies OrderInformationProps;
