@@ -43,8 +43,8 @@ export default async function PlaceOrderPage() {
               <h2 className="text-xl pb-4">Shipping Address</h2>
               <p>{user.address.fullName}</p>
               <p>
-                {user.address.streetAddress}, {user.address.city},{" "}
-                {user.address.postalCode}, {user.address.country}{" "}
+                {user.address.email}, {user.address.phone_number},
+                {user.address.country}
               </p>
               <div>
                 <Link href="/shipping-address">
