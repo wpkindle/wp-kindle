@@ -64,13 +64,13 @@ const Header = async () => {
           <Search />
         </div>
         <Menu />
-      </div>
-      <div className="md:hidden block px-5 pb-2">
-        <Link href="/search">
-          <Button>
-            <SearchIcon />
-          </Button>
-        </Link>
+        <div className="md:hidden block">
+          <Link href="/search">
+            <Button>
+              <SearchIcon />
+            </Button>
+          </Link>
+        </div>
       </div>
     </header>
   );

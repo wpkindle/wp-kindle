@@ -33,7 +33,7 @@ const staticImages = [
 export default function ProductCarousel() {
   return (
     <Carousel
-      className="w-full mb-12 mt-16"
+      className="w-full mt-16"
       opts={{
         loop: true,
       }}
@@ -55,10 +55,10 @@ export default function ProductCarousel() {
                 width="0"
                 height="0"
                 sizes="100vw"
-                className="w-full h-auto filter blur-sm" // Add blur filter class
+                className="w-full h-auto" // Add blur filter class
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <h2 className="bg-black border bg-opacity-50 text-3xl font-bold p-2 text-white">
+                <h2 className="bg-black border text-sm md:text-3xl font-bold p-2 text-white">
                   {image.altText} {/* Use altText as title */}
                 </h2>
               </div>
